@@ -1,2 +1,11 @@
 # Proyecto_integrador
-Descripción, especificación, aplicación y conclusión del proyecto
+
+# Integrantes
+Carla Karina Rocha Hernandez
+
+Lidia Sofia Hernandez Briseño
+
+Maria Gabriela Salas Romo
+
+Santiago 
+
