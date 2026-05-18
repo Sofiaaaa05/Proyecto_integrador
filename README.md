@@ -17,7 +17,7 @@ Realizamos 4 tipos de modelos (Tree Regressor, Random Forest, Gradient Boosting 
 El problema que queremos reducir y si es posible mitigar seria que el negocio generara perdida, tanto economicas comon desperdicio de producto. Ya que al no llevar una organizacion de los productos que mas o menos se venden, estos productos menos vendidos son desperdiciados sin generar ganancia y en los productos mas vendidos al no conocer que este producto atrae mas al cliente nos quedamoos sin cantidad suficinte de este producto lo cual lleva a no generar ganacias y solo quedarnos con los productos que menos interaccion tiene con los clientes.
 
 # Descripcion del dataset
-Nuestro dataset cuenta con 31377 columnas y 11 filas, sumando un total de 345147 datos. Los cuales se dividen en secciones empezando por una clave unica para cada producto, su descripcion y el grupo al que pertenece ya sea tipo de bebida o tipo de comida, el precio unitarios de cada articulo, la cantidad vendida y su total de venta determinado dia; ya que los datos tambien los dividimos por dia, mes, año y dia de la semana.
+Nuestro dataset cuenta con 31377 filas y 11 columnas, sumando un total de 345147 datos. Los cuales se dividen en secciones empezando por una clave unica para cada producto, su descripcion y el grupo al que pertenece ya sea tipo de bebida o tipo de comida, el precio unitarios de cada articulo, la cantidad vendida y su total de venta determinado dia; ya que los datos tambien los dividimos por dia, mes, año y dia de la semana.
 
 # Desarrollo teorico
 
