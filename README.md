@@ -50,6 +50,7 @@ print("Entrenando Decision Tree...")
 tree_reg = DecisionTreeRegressor(max_depth=10, random_state=42)
 tree_reg.fit(X_train, y_train)
 y_pred_real_tree = np.expm1(tree_reg.predict(X_test))
+
 R2=0.7018
 RMSE=$616.29 
 
@@ -58,6 +59,7 @@ print("Entrenando Random Forest...")
 rf = RandomForestRegressor(n_estimators=100, max_depth=None, oob_score=True, random_state=42, n_jobs=-1) # n_jobs=-1 usa todos los núcleos para ir más rápido
 rf.fit(X_train, y_train)
 y_pred_real_rf = np.expm1(rf.predict(X_test))
+
 R2=0.7574
 RMSE=$555.87
 
@@ -66,6 +68,7 @@ print("Entrenando Gradient Boosting...")
 gbr = GradientBoostingRegressor(n_estimators=100, learning_rate=0.1, max_depth=3, random_state=42)
 gbr.fit(X_train, y_train)
 y_pred_real_gbr = np.expm1(gbr.predict(X_test))
+
 R2=0.7238
 RMSE=$593.16
 
@@ -74,6 +77,7 @@ print("Entrenando XGBoost...")
 xgb_reg = xgb.XGBRegressor(max_depth=10, n_estimators=100, learning_rate=0.1, random_state=42)
 xgb_reg.fit(X_train, y_train)
 y_pred_real_xgb = np.expm1(xgb_reg.predict(X_test))
+
 R2=0.7659
 RMSE=$546.06
 
