@@ -104,4 +104,7 @@ Al poner a prueba todos estos modelos relacionados entre si, pero con diferencia
 
 # Conclusiones
 El presente proyecto demostró la viabilidad y el impacto de implementar modelos de aprendizaje supervisado basados en árboles de decisión para optimizar la cadena de suministro y la gestión de inventarios en un restaurante de mariscos. A través de la predicción de la demanda, se logró dar una respuesta directa a la problemática inicial: mitigar las pérdidas económicas por desabasto de productos de alta rotación y reducir el desperdicio (mermas) de artículos con baja demanda. Tambien se demostro que el XGBoosting permitirá al restaurante anticipar el volumen de ventas diarias por producto. Esto se traduce en una ventaja operativa clave: planificar las compras de materia prima fresca con base en datos históricos y no en intuiciones.
+
 # Referencias 
+An Introduction to Statistical Learning. (s. f.). An Introduction To Statistical Learning. https://www.statlearning.com/
+VanderPlas, J. (s. f.). Python Data Science Handbook | Python Data Science Handbook. https://jakevdp.github.io/PythonDataScienceHandbook/
