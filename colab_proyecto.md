@@ -1,0 +1,1 @@
+Puedes revisar y ejecutar todo el código de este análisis directamente en nuestro [Google Colab del Proyecto](https://colab.research.google.com/drive/1uXRZHF3Imoq3PihtDCZIaMYqn7lkBS8i?usp=sharing#scrollTo=37b73ce5-6c0e-4ea5-a89b-24f5744a4b0e)
