@@ -22,72 +22,31 @@ El conjunto de datos bajo análisis está compuesto por 31,377 registros (filas)
 # Desarrollo teorico
 Antes de cualquier calculo primero que nada todo este procedimiento fue realizado en google colab dodne para sascar el resultado de nuestros modelos tuvimos que dar especificaiones y ajustes a la base de datos, hicimos el siguiente procedimiento
 
-# 1.Ubicamos nuestra variable objetivo para estabilizar la varianza
-  y = np.log1p(df['VENTA_TOTAL_DIA'])
-  
-# 2.Procesamos el set de entrenamiento 
-train_temporal = X_train.copy()
-train_temporal['VENTA_LOG'] = y_train
+<img width="737" height="336" alt="image" src="https://github.com/user-attachments/assets/fa77dafa-eb0e-46f9-a3d6-f143a5e45b85" />
+<img width="1268" height="464" alt="image" src="https://github.com/user-attachments/assets/94ce2dd1-043c-47e0-adce-e2b343dbe324" />
+<img width="1277" height="514" alt="image" src="https://github.com/user-attachments/assets/411f2698-4ffa-4564-b040-d833c89f6b8a" />
+<img width="798" height="625" alt="image" src="https://github.com/user-attachments/assets/2287f7de-cee7-423a-9cde-baa5b9163fef" />
+<img width="815" height="599" alt="image" src="https://github.com/user-attachments/assets/ac1071f5-5a17-4786-8e2e-26cb1404a775" />
+<img width="1452" height="495" alt="image" src="https://github.com/user-attachments/assets/a80a92df-99e8-4c61-998e-611ea1652f98" />
+<img width="713" height="490" alt="image" src="https://github.com/user-attachments/assets/0bfa70b2-426e-4d21-afe5-220424f2f9de" />
+<img width="676" height="562" alt="image" src="https://github.com/user-attachments/assets/238e2abf-aa82-40f8-91bb-31922a740850" />
+<img width="751" height="590" alt="image" src="https://github.com/user-attachments/assets/c36dd0bd-d831-4d22-bc1c-5eff4a0c1bb2" />
+<img width="875" height="563" alt="image" src="https://github.com/user-attachments/assets/025cf344-5107-4e14-a017-bc1870b1dfb9" />
+<img width="1733" height="665" alt="image" src="https://github.com/user-attachments/assets/e1c491b2-aa04-4dfe-b921-188c9d23f471" />
+<img width="780" height="728" alt="image" src="https://github.com/user-attachments/assets/45ad1191-427b-4a56-b16e-282abe623f8a" />
+<img width="745" height="264" alt="image" src="https://github.com/user-attachments/assets/5da4ca7b-39ef-4e69-b558-2f45b194acb5" />
+<img width="1733" height="614" alt="image" src="https://github.com/user-attachments/assets/c51b2cad-ad03-4ac6-8abf-f0ebee050782" />
+<img width="1723" height="711" alt="image" src="https://github.com/user-attachments/assets/4b499100-9d06-4737-819c-2b974cef0392" />
+<img width="1758" height="654" alt="image" src="https://github.com/user-attachments/assets/3248b7c9-0085-4e62-a89d-3cd92ac4a8dd" />
+<img width="1770" height="501" alt="image" src="https://github.com/user-attachments/assets/20dcdaae-4981-4084-b53c-910ec002bb23" />
+<img width="753" height="342" alt="image" src="https://github.com/user-attachments/assets/570e2000-ba23-4786-9df3-3447b40cc56a" />
+<img width="871" height="669" alt="image" src="https://github.com/user-attachments/assets/3cc0fa6a-03d6-4969-adfb-ed378aba68b1" />
+<img width="642" height="649" alt="image" src="https://github.com/user-attachments/assets/ff6eb3d5-3ee2-4fde-9f80-3ab06a6dd14d" />
+<img width="677" height="579" alt="image" src="https://github.com/user-attachments/assets/6114f1e1-046e-455d-98ec-40d94e2c5d4a" />
+<img width="929" height="520" alt="image" src="https://github.com/user-attachments/assets/f6e4cbd5-3526-4e7e-9f19-71b10e4ea37b" />
+<img width="987" height="520" alt="image" src="https://github.com/user-attachments/assets/f0fb0a11-88b4-44ee-8f9f-9c073eea8f40" />
+<img width="1123" height="748" alt="image" src="https://github.com/user-attachments/assets/ee0a6804-f06a-41d6-a731-2143d7b397b2" />
 
-# 3.Calcular el promedio de cada producto con train
-producto_map_log = train_temporal.groupby('DESCRIPCION')['VENTA_LOG'].mean()
-
-# 4.Aplicamos mapeo a cada conjunto 
-X_train['PRODUCTO_ENCODED'] = X_train['DESCRIPCION'].map(producto_map_log)
-X_test['PRODUCTO_ENCODED'] = X_test['DESCRIPCION'].map(producto_map_log)
-
-si tenemos un test sin un train visto se asigna el promedio general
-X_test['PRODUCTO_ENCODED'] = X_test['PRODUCTO_ENCODED'].fillna(promedio_global_log)
-
-# 5.limpoeza final 
-X_train = X_train.drop(columns=['DESCRIPCION'])
-  X_test = X_test.drop(columns=['DESCRIPCION'])
-
-Nosotros utilizamos las siguientes formulas para extraer los resultados de los siguientes modelos de regresion que implementamos en nuestro proyecto:
-
-# Tree Regressor:
-print("Entrenando Decision Tree...")
-tree_reg = DecisionTreeRegressor(max_depth=10, random_state=42)
-tree_reg.fit(X_train, y_train)
-y_pred_real_tree = np.expm1(tree_reg.predict(X_test))
-
-R2=0.7018
-RMSE=$616.29 
-
-# Random Forest:
-print("Entrenando Random Forest...")
-rf = RandomForestRegressor(n_estimators=100, max_depth=None, oob_score=True, random_state=42, n_jobs=-1) # n_jobs=-1 usa todos los núcleos para ir más rápido
-rf.fit(X_train, y_train)
-y_pred_real_rf = np.expm1(rf.predict(X_test))
-
-R2=0.7574
-RMSE=$555.87
-
-# Gradient Boosting:
-print("Entrenando Gradient Boosting...")
-gbr = GradientBoostingRegressor(n_estimators=100, learning_rate=0.1, max_depth=3, random_state=42)
-gbr.fit(X_train, y_train)
-y_pred_real_gbr = np.expm1(gbr.predict(X_test))
-
-R2=0.7238
-RMSE=$593.16
-
-# XGBoost:
-print("Entrenando XGBoost...")
-xgb_reg = xgb.XGBRegressor(max_depth=10, n_estimators=100, learning_rate=0.1, random_state=42)
-xgb_reg.fit(X_train, y_train)
-y_pred_real_xgb = np.expm1(xgb_reg.predict(X_test))
-
-R2=0.7659
-RMSE=$546.06
-
-Los R2 y RMSE los sacamos por la siguiente formula:
-
-for nombre, preds in modelos_dict.items():
-    rmse_r = np.sqrt(mean_squared_error(y_test_real, preds))
-    r2_r = r2_score(y_test_real, preds)
-    print(f"{nombre:<30} | {r2_r:<10.4f} | ${rmse_r:<11.2f}")
-    
 # Aplicacion practica del modelo 
 De esta manera es que sirve cada uno de los siguientes modelos en nuestro producto si lo aplicaramos en la vida real:
 
