@@ -72,7 +72,7 @@ y_pred_real_gbr = np.expm1(gbr.predict(X_test))
 R2=0.7238
 RMSE=$593.16
 
-# XGBoosting:
+# XGBoost:
 print("Entrenando XGBoost...")
 xgb_reg = xgb.XGBRegressor(max_depth=10, n_estimators=100, learning_rate=0.1, random_state=42)
 xgb_reg.fit(X_train, y_train)
@@ -91,19 +91,19 @@ for nombre, preds in modelos_dict.items():
 # Aplicacion practica del modelo 
 De esta manera es que sirve cada uno de los siguientes modelos en nuestro producto si lo aplicaramos en la vida real:
 
-Tree Regressor: Es un modelo que se basa en preguntas si o no, por lo que no es tan exacto y en este caso ignorar datos como la fecha, dia, año; por lo que si un producto vende mucho, el árbol va a predecir buenas ventas sea lunes o sabado, de hecho como nos podemos dar cuenta su error es el mas alto con 616.29
+Tree Regressor: Es un modelo que se basa en preguntas si o no, por lo que no es tan exacto y en este caso ignora datos como la fecha, dia, año; por lo que si un producto vende mucho, el árbol va a predecir buenas ventas sea lunes o sabado, de hecho como nos podemos dar cuenta su error es el mas alto con 616.29
 
-Random Forest: Es un modelo mas democratico, ya que se convina con el voto de los árboles especialstaa en productos y fechas, ya no es un árbol de decisión tan simple, teniendo un error mas bajo que el anterior de 555.87
+Random Forest: Es un modelo mas democratico, ya que se convina con el voto de los árboles especialistas en productos y fechas, ya no es un árbol de decisión tan simple, teniendo un error mas bajo que el anterior de 555.87
 
-Gradient Boosting: Aqui al enfocarse en arboles de secuencia, o sea, uno trabaja el siguiente corrige y tenerlo en una profundidad de 3 limmita la variedad de productos del dataset quedando en un erro de 593.16. Sin embargo asumiendo que subimos la profundidad aunque bajaria significativamente su error, si lo comparamos con xgbooosting sigue siendo mejor; ya que para empezar aunque tendria mas exactitudes estas pueden ser tan pequeñas que al minimo cambio de ventas en determinado dia de otro año se descontrolarian y cairiamos en un sobreajuste, tambien este modelo es mucho mas tardado al ser uno por uno.
+Gradient Boosting: Aqui al enfocarse en arboles de secuencia, o sea, uno trabaja, el siguiente corrige y tenerlo en una profundidad de 3 limmita la variedad de productos del dataset quedando en un erro de 593.16. Sin embargo asumiendo que subimos la profundidad aunque bajaria significativamente su error, si lo comparamos con xgboos sigue siendo mejor; ya que para empezar aunque tendria mas exactitudes estas pueden ser tan pequeñas que al minimo cambio de ventas en determinado dia de otro año se descontrolarian y cairiamos en un sobreajuste, tambien este modelo es mucho mas tardado al ser uno por uno.
 
-XGBoosting: Al tener una profundidad de 10 y corregir errores en cadena el modelo encuentra un equilibrio dodne sa prioridad al producto, pero tomando en cuenta el año y dia; por lo que toma hasta el ultimo dato es fechas sin perder el foco central en los productos. obteniendo un margen de error mas bajo en dinero real 546.06 y obtiene un R2 más alto.
+XGBoost: Al tener una profundidad de 10 y corregir errores en cadena el modelo encuentra un equilibrio donde da prioridad al producto, pero tomando en cuenta el año y dia; por lo que toma hasta el ultimo dato es fechas sin perder el foco central en los productos. obteniendo un margen de error mas bajo en dinero real 546.06 y obtiene un R2 más alto.
 
 # Discusion 
-Al poner a prueba todos estos modelos relacionados entre si, pero con diferencias significativas descubrimos que al final nuestro mejor modelo con un margen de error bajo de 546.06 es el XGBossting esto se debe al metodo que utiliza este modelo lo cual lo hace mas eficiente, ya que no solo se enfoca en el producto y sus ventas, se enfoca en los otros factores que tenemos en nuestra base, como la fecha, dia, mes, año y dia de la semana.  Sin embargo el modelo se limita al no tener elementos externos como el clima o eventos festivos que justifican ese error.
+Al poner a prueba todos estos modelos relacionados entre si, pero con diferencias significativas descubrimos que al final nuestro mejor modelo con un margen de error bajo de 546.06 es el XGBoost esto se debe al metodo que utiliza este modelo lo cual lo hace mas eficiente, ya que no solo se enfoca en el producto y sus ventas, se enfoca en los otros factores que tenemos en nuestra base, como la fecha, dia, mes, año y dia de la semana.  Sin embargo el modelo se limita al no tener elementos externos como el clima o eventos festivos que justifican ese error.
 
 # Conclusiones
-El presente proyecto demostró la viabilidad y el impacto de implementar modelos de aprendizaje supervisado basados en árboles de decisión para optimizar la cadena de suministro y la gestión de inventarios en un restaurante de mariscos. A través de la predicción de la demanda, se logró dar una respuesta directa a la problemática inicial: mitigar las pérdidas económicas por desabasto de productos de alta rotación y reducir el desperdicio (mermas) de artículos con baja demanda. Tambien se demostro que el XGBoosting permitirá al restaurante anticipar el volumen de ventas diarias por producto. Esto se traduce en una ventaja operativa clave: planificar las compras de materia prima fresca con base en datos históricos y no en intuiciones.
+El presente proyecto demostró la viabilidad y el impacto de implementar modelos de aprendizaje supervisado basados en árboles de decisión para optimizar la cadena de suministro y la gestión de inventarios en un restaurante de mariscos. A través de la predicción de la demanda, se logró dar una respuesta directa a la problemática inicial: mitigar las pérdidas económicas por desabasto de productos de alta rotación y reducir el desperdicio (mermas) de artículos con baja demanda. Tambien se demostro que el XGBoost permitirá al restaurante anticipar el volumen de ventas diarias por producto. Esto se traduce en una ventaja operativa clave: planificar las compras de materia prima fresca con base en datos históricos y no en intuiciones.
 
 # Referencias 
 An Introduction to Statistical Learning. (s. f.). An Introduction To Statistical Learning. https://www.statlearning.com/
